@@ -1,0 +1,164 @@
+<div class="container">
+
+  <!-- Input section for CosmicId -->
+  <div class="input-container">
+    <label for="cosmicId" class="input-label">Enter Cosmic ID:</label>
+    <div class="input-group">
+      <input
+        type="text"
+        id="cosmicId"
+        [(ngModel)]="cosmicId"
+        placeholder="Enter CosmicId"
+        class="input-field"
+      />
+      <button (click)="preview()" class="preview-button">Preview</button>
+    </div>
+  </div>
+
+  <!-- Modal for displaying selected work item details -->
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <span (click)="closeModal()" class="close">&times;</span>
+      <h2>Details for Cosmic ID: {{ cosmicId }}</h2>
+
+      <div id="pdfContent">
+        <!-- Work Item Summary section -->
+        <div *ngIf="selectedWorkItem?.summary.length > 0" class="box">
+          <h3>Work Item Summary:</h3>
+          <div class="work-item-details">
+            <div class="detail-box">
+              <span><strong>CosmicId:</strong></span>
+              <span>{{ selectedWorkItem.cosmicId }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Parent Case ID:</strong></span>
+              <span>{{ selectedWorkItem.parentCaseId }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Business Unit Label:</strong></span>
+              <span>{{ selectedWorkItem.businessUnitLabel }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Focus Identifier:</strong></span>
+              <span>{{ selectedWorkItem.focusIdentifier }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Focus Name:</strong></span>
+              <span>{{ selectedWorkItem.focusName }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Created By:</strong></span>
+              <span>{{ selectedWorkItem.createdBy }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Risk Type:</strong></span>
+              <span>{{ selectedWorkItem.summary[0].riskType[0].label }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Has Existing Ticket:</strong></span>
+              <span>{{ selectedWorkItem.summary[0].hasExistingTicket }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Existing Ticket Number:</strong></span>
+              <span>{{ selectedWorkItem.summary[0].existingTicketNumber }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Internal Reference Number:</strong></span>
+              <span>{{ selectedWorkItem.summary[0].internalReferenceNumber }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Existing Ticket Reason:</strong></span>
+              <span>{{ selectedWorkItem.summary[0].existingTicketReason }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Ticket Reason Others:</strong></span>
+              <span>{{ selectedWorkItem.summary[0].ticketReasonOthers }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entity Information section -->
+        <div *ngIf="selectedWorkItem?.entityInformation.length > 0" class="box">
+          <h3>Entity Information:</h3>
+          <div class="work-item-details">
+            <div class="detail-box">
+              <span><strong>Name:</strong></span>
+              <span>{{ selectedWorkItem.entityInformation[0].name }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Category:</strong></span>
+              <span>{{ selectedWorkItem.entityInformation[0].category }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Type:</strong></span>
+              <span>{{ selectedWorkItem.entityInformation[0].type }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Country of Incorporation:</strong></span>
+              <span>{{ selectedWorkItem.entityInformation[0].countryOfIncorporationLabel }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Date of Birth/Incorporation:</strong></span>
+              <span>{{ selectedWorkItem.entityInformation[0].dateofBirthIncorporatedDate }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Corporate Registry Number:</strong></span>
+              <span>{{ selectedWorkItem.entityInformation[0].corporateRegistryNumber }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Information section -->
+        <div *ngIf="selectedWorkItem?.accounts.length > 0" class="box">
+          <h3>Account Information:</h3>
+          <div class="work-item-details">
+            <div class="detail-box">
+              <span><strong>Account Number:</strong></span>
+              <span>{{ selectedWorkItem.accounts[0].accountNumber }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Account Type:</strong></span>
+              <span>{{ selectedWorkItem.accounts[0].accountTypeUI }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Account Status:</strong></span>
+              <span>{{ selectedWorkItem.accounts[0].accountStatusUI }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaction Information section -->
+        <div *ngIf="selectedWorkItem?.transaction.length > 0" class="box">
+          <h3>Transaction Information:</h3>
+          <div class="work-item-details">
+            <div class="detail-box">
+              <span><strong>Transaction ID:</strong></span>
+              <span>{{ selectedWorkItem.transaction[0].transactionReferenceId }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Transaction Date:</strong></span>
+              <span>{{ selectedWorkItem.transaction[0].transactionDate }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Amount:</strong></span>
+              <span>{{ selectedWorkItem.transaction[0].amount }} {{ selectedWorkItem.transaction[0].currencyCode.label }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Originator:</strong></span>
+              <span>{{ selectedWorkItem.transaction[0].originatorName }}</span>
+            </div>
+            <div class="detail-box">
+              <span><strong>Beneficiary:</strong></span>
+              <span>{{ selectedWorkItem.transaction[0].beneficiaryName }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action button (Download PDF) -->
+      <div>
+        <button (click)="downloadPDF()">Download PDF</button>
+      </div>
+    </div>
+  </div>
+</div>

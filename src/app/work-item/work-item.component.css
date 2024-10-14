@@ -1,0 +1,105 @@
+.container {
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.modal {
+  display: block; /* Show the modal */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  display: flex; /* Enable flexbox for centering */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto; /* Center the modal */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Set a width for the modal */
+  max-width: 600px; /* Optional: Set a max width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+  border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.box {
+  margin-top: 20px;
+}
+
+.work-item-details {
+  margin-left: 20px;
+}
+
+.detail-box {
+  margin-bottom: 10px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column; /* Stack label and input/button vertically */
+  margin-bottom: 20px; /* Space below input section */
+}
+
+.input-label {
+  font-size: 1.2em; /* Larger font size for label */
+  margin-bottom: 8px; /* Space between label and input */
+}
+
+.input-group {
+  display: flex; /* Align input and button horizontally */
+}
+
+.input-field {
+  width: 200px; /* Set a specific width for the input field */
+  padding: 10px; /* Padding for input */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 1em; /* Font size for input */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.input-field:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+}
+
+.preview-button {
+  padding: 10px 15px; /* Padding for button */
+  margin-left: 10px; /* Space between input and button */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Text color */
+  font-size: 1em; /* Font size for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for background */
+}
+
+.preview-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
